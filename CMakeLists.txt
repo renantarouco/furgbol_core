@@ -3,7 +3,6 @@ project(FurgbolCore)
 
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Protobuf REQUIRED)
-find_package(nlohmann_json REQUIRED)
 
 include_directories("include")
 

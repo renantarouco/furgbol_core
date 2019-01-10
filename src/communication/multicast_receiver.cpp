@@ -17,13 +17,13 @@ MulticastReceiver::MulticastReceiver(std::string multicast_ip, short multicast_p
                 boost::asio::buffer(_buffer, BUFFER_SIZE),
                 _sender_endpoint,
                 boost::bind(
-                    &MulticastReceiver::handle_receive_from,
+                    &MulticastReceiver::_handle_receive_from,
                     this,
                     boost::asio::placeholders::error,
                     boost::asio::placeholders::bytes_transferred));
 }
 
-void MulticastReceiver::handle_receive_from(const boost::system::error_code &ec, size_t bytes_rcvd)
+void MulticastReceiver::_handle_receive_from(const boost::system::error_code &ec, size_t bytes_rcvd)
 {
     if (!ec) {
         received(_buffer, bytes_rcvd);
@@ -31,7 +31,7 @@ void MulticastReceiver::handle_receive_from(const boost::system::error_code &ec,
                     boost::asio::buffer(_buffer, BUFFER_SIZE),
                     _sender_endpoint,
                     boost::bind(
-                        &MulticastReceiver::handle_receive_from,
+                        &MulticastReceiver::_handle_receive_from,
                         this,
                         boost::asio::placeholders::error,
                         boost::asio::placeholders::bytes_transferred));

@@ -19,7 +19,7 @@ private:
     boost::asio::ip::udp::socket _socket;
     boost::asio::ip::udp::endpoint _sender_endpoint;
     char _buffer[BUFFER_SIZE];
-    void handle_receive_from(const boost::system::error_code &, size_t);
+    void _handle_receive_from(const boost::system::error_code &, size_t);
 };
 
 #endif
