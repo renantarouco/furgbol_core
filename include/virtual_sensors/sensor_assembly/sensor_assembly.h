@@ -15,11 +15,16 @@
 #define END_SENSOR(class,type) \
                 type *__output = new type;\
                 type __get_output() { return *this->__output; }\
+                type *__get_output_src() { return this->__output; }\
             };\
             extern "C" ISensor *create_sensor() { return new CLASS_NAME(class); }\
             extern "C" type get_output(ISensor *sensor) {\
                 CAST_SENSOR(class)\
                 return this_sensor->__get_output();\
+            }\
+            extern "C" type *get_output_src(ISensor *sensor) {\
+                CAST_SENSOR(class)\
+                return this_sensor->__get_output_src();\
             }
 
 #define IN(type,name) \

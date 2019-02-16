@@ -17,6 +17,6 @@
 
 #define INPUT_DECL(type,name) type *PRIV_IN_NAME(name);
 
-#define INPUT_LINK_FN(type,name) void __link_ ## name(type *src) { this->PRIV_IN_NAME(name) = src; }
+#define INPUT_LINK_FN(type,name) void link_ ## name(type *src) { this->PRIV_IN_NAME(name) = src; }
 
 #endif
